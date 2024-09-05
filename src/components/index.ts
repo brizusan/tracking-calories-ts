@@ -1,0 +1,6 @@
+export {Header} from "./Header"
+export {Formulario} from "./Formulario"
+export { ActivityList} from "./ActivityList"
+export { TrackinCalories} from "./TrackinCalories"
+export {Edit} from "./icons/Edit"
+export {Delete} from "./icons/Delete"

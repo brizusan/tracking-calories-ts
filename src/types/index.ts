@@ -1,0 +1,13 @@
+
+export interface Category{
+  id: number
+  name: string
+}
+
+export interface Activity{
+  id?: string | null
+  category: number
+  activity: string
+  calories: number
+}
+
