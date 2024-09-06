@@ -1,14 +1,9 @@
-import type { ActivityActions } from "../reducers/activity-reducer";
-import { Activity } from "../types";
+import { useActivity } from "../hooks/useActivity";
 import { Formulario } from "./Formulario";
 
-type HeaderProps = {
-  dispatch: React.Dispatch<ActivityActions>;
-  activeId: Activity["id"];
-  activities: Activity[];
-};
+export const Header = () => {
+  const {dispatch,state} = useActivity()
 
-export const Header = ({ dispatch, activeId, activities }: HeaderProps) => {
   return (
     <>
       <header className="bg-lime-500 py-4">
@@ -32,8 +27,8 @@ export const Header = ({ dispatch, activeId, activities }: HeaderProps) => {
         <div className="max-w-4xl mx-auto">
           <Formulario
             dispatch={dispatch}
-            activeId={activeId}
-            activities={activities}
+            activeId={state.activeId}
+            activities={state.activities}
           />
         </div>
       </section>

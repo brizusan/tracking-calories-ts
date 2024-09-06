@@ -1,11 +1,10 @@
-import { useEffect, useReducer } from "react";
+import { useEffect } from "react";
 import { ActivityList, Header, TrackinCalories } from "./components";
-import { activityReducer, initialState } from "./reducers/activity-reducer";
+import { useActivity } from "./hooks/useActivity";
 
 function App() {
-  const [state, dispatch] = useReducer(activityReducer, initialState);
 
-  const isEmpty = state.activities.length === 0;
+  const {isEmpty , state} = useActivity()
 
   useEffect(() => {
     localStorage.setItem("activities", JSON.stringify(state.activities));
@@ -13,22 +12,14 @@ function App() {
 
   return (
     <>
-      <Header
-        dispatch={dispatch}
-        activeId={state.activeId}
-        activities={state.activities}
-      />
+      <Header />
       {!isEmpty && (
         <TrackinCalories 
           activities={state.activities}
         />
       )}
 
-      <ActivityList
-        isEmpty={isEmpty}
-        activities={state.activities}
-        dispatch={dispatch}
-      />
+      <ActivityList />
     </>
   );
 }

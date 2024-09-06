@@ -3,15 +3,14 @@ import type { Activity } from "../types";
 import { categories } from "../data";
 import { Edit } from "./icons/Edit";
 import { Delete } from "./icons/Delete";
-import { ActivityActions } from "../reducers/activity-reducer";
+import { useActivity } from "../hooks/useActivity";
 
-type ActivityListProps = {
-  isEmpty: boolean;
-  activities: Activity[];
-  dispatch: React.Dispatch<ActivityActions>;
-};
 
-export const ActivityList = ({ isEmpty, activities , dispatch }: ActivityListProps) => {
+
+export const ActivityList = () => {
+
+  const {dispatch ,isEmpty , state : {activities}} = useActivity()
+  
   const categoryName = useMemo(
     () => (category: Activity["category"]) =>
       categories.map((cat) => (cat.id === category ? cat.name : "")),
